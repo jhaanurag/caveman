@@ -29,6 +29,8 @@ A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill/plugin and
 
 Based on the viral observation that caveman-speak dramatically reduces LLM token usage without losing technical substance. So we made it a one-line install.
 
+> **New Feature:** Minimal punctuation! The model now smartly omits commas and periods to squeeze out further token savings, keeping punctuation *only* when absolutely required for code or disambiguation.
+
 ## Before / After
 
 <table>

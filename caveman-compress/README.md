@@ -134,6 +134,7 @@ Caveman compress natural language. It never touch:
 - File paths (`/src/components/...`)
 - Commands (`npm install`, `git commit`)
 - Technical terms, library names, API names
+- Punctuation (Only strictly required punctuation is kept, otherwise reduced to minimize tokens)
 - Headings (exact text preserved)
 - Tables (structure preserved, cell text compressed)
 - Dates, version numbers, numeric values
