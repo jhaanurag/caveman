@@ -36,7 +36,7 @@ def call_claude(prompt: str) -> str:
 
 def build_compress_prompt(original: str) -> str:
     return f"""
-将这个 markdown 压缩成原始人(caveman-zh)格式。
+将这个 markdown 压缩成原始人(ultra-caveman)格式。
 
 严格规则 (STRICT RULES):
 - 绝不要修改 ``` 代码块内部的任何内容
@@ -54,7 +54,7 @@ def build_compress_prompt(original: str) -> str:
 
 def build_fix_prompt(original: str, compressed: str, errors: List[str]) -> str:
     errors_str = "\n".join(f"- {e}" for e in errors)
-    return f"""你正在修复一个被原始人压缩的 markdown 文件。发现了特定的验证错误。
+    return f"""你正在修复一个被超级超级超级原始人压缩的 markdown 文件。发现了特定的验证错误。
 
 关键规则 (CRITICAL RULES):
 - 不要重新压缩或重述带有新意图的文件

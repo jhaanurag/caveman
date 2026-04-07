@@ -1,5 +1,5 @@
 ---
-name: caveman-compress-zh
+name: ultra-caveman-compress
 description: >
   将自然语言内存文件 (CLAUDE.md, todos, preferences) 压缩成原始人格式
   以节省输入token。保留所有技术实质、代码、URLs 和结构。
@@ -7,7 +7,7 @@ description: >
   触发词: /caveman-compress <filepath> 或 "compress memory file" (压缩内存文件)
 ---
 
-# 原始人压缩 (Caveman Compress)
+# 超级超级超级原始人压缩 (Caveman Compress)
 
 ## 目的
 

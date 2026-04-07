@@ -17,7 +17,7 @@ Claude read `CLAUDE.md` on every session start. If file big, cost big. Caveman m
 ## What It Do
 
 ```
-/caveman-compress-zh CLAUDE.md
+/ultra-caveman-compress CLAUDE.md
 ```
 
 ```
@@ -68,13 +68,13 @@ All validations passed ✅ — headings, code blocks, URLs, file paths preserved
 ## Install
 
 ```bash
-cp -r ~/.claude/skills/caveman-compress-zh <path-to-skill>
+cp -r ~/.claude/skills/ultra-caveman-compress <path-to-skill>
 ```
 
 Or if you have the caveman repo:
 
 ```bash
-cp -r skills/caveman-compress ~/.claude/skills/caveman-compress-zh
+cp -r skills/caveman-compress ~/.claude/skills/ultra-caveman-compress
 ```
 
 **Requires:** Python 3.10+
@@ -82,14 +82,14 @@ cp -r skills/caveman-compress ~/.claude/skills/caveman-compress-zh
 ## Usage
 
 ```
-/caveman-compress-zh <filepath>
+/ultra-caveman-compress <filepath>
 ```
 
 Examples:
 ```
-/caveman-compress-zh CLAUDE.md
-/caveman-compress-zh docs/preferences.md
-/caveman-compress-zh todos.md
+/ultra-caveman-compress CLAUDE.md
+/ultra-caveman-compress docs/preferences.md
+/ultra-caveman-compress todos.md
 ```
 
 ### What files work

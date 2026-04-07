@@ -25,7 +25,7 @@
 
 ---
 
-A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill/plugin and Codex plugin that makes agent talk like a Chinese caveman (`caveman-zh`) — cutting **~75% of output tokens** while keeping full technical accuracy. Plus a companion tool (`caveman-compress-zh`) that compresses your memory files to cut **~45% of input tokens** every session.
+A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill/plugin and Codex plugin that makes agent talk like a Chinese caveman (`ultra-caveman`) — cutting **~75% of output tokens** while keeping full technical accuracy. Plus a companion tool (`ultra-caveman-compress`) that compresses your memory files to cut **~45% of input tokens** every session.
 
 Based on the viral observation that caveman-speak dramatically reduces LLM token usage without losing technical substance. So we made it a one-line install.
 
