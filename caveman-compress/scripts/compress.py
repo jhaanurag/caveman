@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Caveman Memory Orchestrator
+Caveman Memory Orchestrator (Chinese Edition)
 
 Usage:
     python memory/compress.py <filepath>
@@ -36,48 +36,48 @@ def call_claude(prompt: str) -> str:
 
 def build_compress_prompt(original: str) -> str:
     return f"""
-Compress this markdown into caveman format.
+将这个 markdown 压缩成原始人(caveman-zh)格式。
 
-STRICT RULES:
-- Do NOT modify anything inside ``` code blocks
-- Do NOT modify anything inside inline backticks
-- Preserve ALL URLs exactly
-- Preserve ALL headings exactly
-- Preserve file paths and commands
+严格规则 (STRICT RULES):
+- 绝不要修改 ``` 代码块内部的任何内容
+- 绝不要修改内联代码(`反引号`)内部的任何内容
+- 完全保留所有的 URLs
+- 完全保留所有的标题 (headings)
+- 保留文件路径和终端命令
 
-Only compress natural language.
+仅压缩自然语言，并使用极其精简的中文原始人语法。
 
-TEXT:
+文本 (TEXT):
 {original}
 """
 
 
 def build_fix_prompt(original: str, compressed: str, errors: List[str]) -> str:
     errors_str = "\n".join(f"- {e}" for e in errors)
-    return f"""You are fixing a caveman-compressed markdown file. Specific validation errors were found.
+    return f"""你正在修复一个被原始人压缩的 markdown 文件。发现了特定的验证错误。
 
-CRITICAL RULES:
-- DO NOT recompress or rephrase the file
-- ONLY fix the listed errors — leave everything else exactly as-is
-- The ORIGINAL is provided as reference only (to restore missing content)
-- Preserve caveman style in all untouched sections
+关键规则 (CRITICAL RULES):
+- 不要重新压缩或重述带有新意图的文件
+- 只修复列出的错误 — 其他所有部分保持原样
+- 原文仅作为参考提供（用于恢复丢失的内容）
+- 在所有未触及的部分保留原始人风格
 
-ERRORS TO FIX:
+需要修复的错误 (ERRORS TO FIX):
 {errors_str}
 
-HOW TO FIX:
-- Missing URL: find it in ORIGINAL, restore it exactly where it belongs in COMPRESSED
-- Code block mismatch: find the exact code block in ORIGINAL, restore it in COMPRESSED
-- Heading mismatch: restore the exact heading text from ORIGINAL into COMPRESSED
-- Do not touch any section not mentioned in the errors
+如何修复 (HOW TO FIX):
+- 丢失的URL: 从原文件中找到它，并准确放回压缩版应有的位置
+- 代码块不匹配: 从原文件中找到完全相同的代码块，并在压缩版中恢复它
+- 标题不匹配: 从原文件中恢复完全相同的标题文字到压缩版本中
+- 不要修改未在错误中提及的任何部分
 
-ORIGINAL (reference only):
+原文(仅供参考) (ORIGINAL):
 {original}
 
-COMPRESSED (fix this):
+压缩版(需修复) (COMPRESSED):
 {compressed}
 
-Return ONLY the fixed compressed file. No explanation.
+只返回修复后的压缩文件。不要解释。
 """
 
 

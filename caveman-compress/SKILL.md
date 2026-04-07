@@ -1,111 +1,111 @@
 ---
-name: caveman-compress
+name: caveman-compress-zh
 description: >
-  Compress natural language memory files (CLAUDE.md, todos, preferences) into caveman format
-  to save input tokens. Preserves all technical substance, code, URLs, and structure.
-  Compressed version overwrites the original file. Human-readable backup saved as FILE.original.md.
-  Trigger: /caveman-compress <filepath> or "compress memory file"
+  将自然语言内存文件 (CLAUDE.md, todos, preferences) 压缩成原始人格式
+  以节省输入token。保留所有技术实质、代码、URLs 和结构。
+  压缩版本将覆盖原始文件。人类可读的备份存为 FILE.original.md。
+  触发词: /caveman-compress <filepath> 或 "compress memory file" (压缩内存文件)
 ---
 
-# Caveman Compress
+# 原始人压缩 (Caveman Compress)
 
-## Purpose
+## 目的
 
-Compress natural language files (CLAUDE.md, todos, preferences) into caveman-speak to reduce input tokens. Compressed version overwrites original. Human-readable backup saved as `<filename>.original.md`.
+将自然语言文件（CLAUDE.md、todos、偏好设置）压缩成原始人话语，以减少输入 token。压缩版覆盖原版。人类可读备份保存为 `<filename>.original.md`。
 
-## Trigger
+## 触发
 
-`/caveman-compress <filepath>` or when user asks to compress a memory file.
+`/caveman-compress <filepath>` 或当用户要求压缩内存文件时。
 
-## Process
+## 流程
 
-1. This SKILL.md lives alongside `memory/` in the same directory. Find that directory.
+1. 此 SKILL.md 与 `memory/` 在同一目录下。找到该目录。
 
-2. Run:
+2. 运行:
    ```
    cd <directory_containing_this_SKILL.md> && python3 -m scripts <absolute_filepath>
    ```
 
-3. The CLI will:
-   - detect file type (no tokens)
-   - call Claude to compress
-   - validate output (no tokens)
-   - if errors: cherry-pick fix with Claude (targeted fixes only, no recompression)
-   - retry up to 2 times
+3. CLI 将:
+   - 检测文件类型 (无tokens)
+   - 调用 Claude 进行压缩
+   - 验证输出 (无tokens)
+   - 如果遇到错误: 使用 Claude 仅针对修复部分提取 (仅局部修复，不重新压缩整个文件)
+   - 最多重试2次
 
-4. Return result to user
+4. 将结果返回给用户
 
-## Compression Rules
+## 压缩规则
 
-### Remove
-- Articles: a, an, the
-- Filler: just, really, basically, actually, simply, essentially, generally
-- Pleasantries: "sure", "certainly", "of course", "happy to", "I'd recommend"
-- Hedging: "it might be worth", "you could consider", "it would be good to"
-- Redundant phrasing: "in order to" → "to", "make sure to" → "ensure", "the reason is because" → "because"
-- Connective fluff: "however", "furthermore", "additionally", "in addition"
+### 移除
+- 助词：的、地、得、了
+- 废话：真的、基本上、其实、简单来说、本质上、通常
+- 客套话："没问题"、"当然"、"好的"、"我很乐意"、"我建议"
+- 含糊表达："考虑使用"、"也许可以试试"、"最好是"
+- 冗余短语："为了" → "去"，"一定要" → "确保"，"原因是" → "因为"
+- 连接词废话："然而"、"而且"、"另外"、"此外"
 
-### Preserve EXACTLY (never modify)
-- Code blocks (fenced ``` and indented)
-- Inline code (`backtick content`)
-- URLs and links (full URLs, markdown links)
-- File paths (`/src/components/...`, `./config.yaml`)
-- Commands (`npm install`, `git commit`, `docker build`)
-- Technical terms (library names, API names, protocols, algorithms)
-- Proper nouns (project names, people, companies)
-- Dates, version numbers, numeric values
-- Environment variables (`$HOME`, `NODE_ENV`)
+### 完美保留 (绝不修改)
+- 代码块 (前后 ``` 标记和缩进内容的)
+- 内联代码 (`反引号内容`)
+- URLs 和链接 (完整URL, markdown链接)
+- 文件路径 (`/src/components/...`, `./config.yaml`)
+- 命令 (`npm install`, `git commit`, `docker build`)
+- 技术词汇 (库名、API名称、协议、算法)
+- 专有名词 (项目名、人名、公司)
+- 日期、版本号、数值
+- 环境变量 (`$HOME`, `NODE_ENV`)
 
-### Preserve Structure
-- All markdown headings (keep exact heading text, compress body below)
-- Bullet point hierarchy (keep nesting level)
-- Numbered lists (keep numbering)
-- Tables (compress cell text, keep structure)
-- Frontmatter/YAML headers in markdown files
+### 保留结构
+- 所有 markdown 标题 (保持精确的标题文本，压缩下面的正文)
+- 列表项的层级 (保持嵌套层级不变)
+- 有序列表 (保留编号)
+- 表格 (压缩单元格内文本，保留表格结构)
+- Markdown 文件中的 Frontmatter/YAML 头文件
 
-### Compress
-- Use short synonyms: "big" not "extensive", "fix" not "implement a solution for", "use" not "utilize"
-- Fragments OK: "Run tests before commit" not "You should always run tests before committing"
-- Drop "you should", "make sure to", "remember to" — just state the action
-- Merge redundant bullets that say the same thing differently
-- Keep one example where multiple examples show the same pattern
+### 压缩
+- 使用短同义词："大" 不写 "过于庞大的"，"改" 不写 "实施修复方案"，"用" 不写 "利用"
+- 允许句子残缺："提交前跑测试"， 不写 "你应当在提交代码前确保始终跑完所有测试"
+- 删掉 "你应当", "一定要", "记得" — 直接陈述动作
+- 合并重复说同一件事的要点
+- 如果多个示例展示同一模式，只保留一个示例
 
-CRITICAL RULE:
-Anything inside ``` ... ``` must be copied EXACTLY.
-Do not:
-- remove comments
-- remove spacing
-- reorder lines
-- shorten commands
-- simplify anything
+严格规则:
+任何位于 ``` ... ``` 内部的东西必须完美复制。
+不要:
+- 删注释
+- 删空格
+- 重排顺序
+- 缩短命令
+- 试图简化代码部分
 
-Inline code (`...`) must be preserved EXACTLY.
-Do not modify anything inside backticks.
+内联代码 (`...`) 必须完美保留。
+反引号内的内容不要有任何改动。
 
-If file contains code blocks:
-- Treat code blocks as read-only regions
-- Only compress text outside them
-- Do not merge sections around code
+如果文件有代码块:
+- 将代码块视为只读区域
+- 仅压缩其外部的文本
+- 不要合并代码块周边的内容
 
-## Pattern
+## 模式
 
-Original:
-> You should always make sure to run the test suite before pushing any changes to the main branch. This is important because it helps catch bugs early and prevents broken builds from being deployed to production.
+原版:
+> 你应当始终确保在将任何变更推送到主分支之前运行测试套件。这非常重要，因为它可以帮助你及早捕获 Bug，并防止损坏的构建被部署到生产环境中。
 
-Compressed:
-> Run tests before push to main. Catch bugs early, prevent broken prod deploys.
+压缩版:
+> 推送main前跑测试。早抓Bug，防坏版本上线生产区。
 
-Original:
-> The application uses a microservices architecture with the following components. The API gateway handles all incoming requests and routes them to the appropriate service. The authentication service is responsible for managing user sessions and JWT tokens.
+原版:
+> 这个应用程序使用了微服务架构，包含以下这些组件。API网关会处理所有传入请求，并把它们路由到恰当的服务。身份认证服务负责管理用户会话和 JWT 令牌。
 
-Compressed:
-> Microservices architecture. API gateway route all requests to services. Auth service manage user sessions + JWT tokens.
+压缩版:
+> 微服务架构。API网关路由所有请求到各服务。Auth服务管理用户会话 + JWT token。
 
-## Boundaries
+## 边界
 
-- ONLY compress natural language files (.md, .txt, extensionless)
-- NEVER modify: .py, .js, .ts, .json, .yaml, .yml, .toml, .env, .lock, .css, .html, .xml, .sql, .sh
-- If file has mixed content (prose + code), compress ONLY the prose sections
-- If unsure whether something is code or prose, leave it unchanged
-- Original file is backed up as FILE.original.md before overwriting
-- Never compress FILE.original.md (skip it)
+- 只有自然语言文件才进行压缩 (.md, .txt, 无后缀文件)
+- 决不修改: .py, .js, .ts, .json, .yaml, .yml, .toml, .env, .lock, .css, .html, .xml, .sql, .sh
+- 如果文件是混排（文本+代码），只压缩纯文本部分
+- 如果不确定某部分是代码还是文本，保持原样
+- 原始文件在被覆盖前将被备份为 FILE.original.md
+- 不要压缩 FILE.original.md (直接跳过)

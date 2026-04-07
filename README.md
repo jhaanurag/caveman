@@ -25,7 +25,7 @@
 
 ---
 
-A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill/plugin and Codex plugin that makes agent talk like caveman — cutting **~75% of output tokens** while keeping full technical accuracy. Plus a companion tool that compresses your memory files to cut **~45% of input tokens** every session.
+A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill/plugin and Codex plugin that makes agent talk like a Chinese caveman (`caveman-zh`) — cutting **~75% of output tokens** while keeping full technical accuracy. Plus a companion tool (`caveman-compress-zh`) that compresses your memory files to cut **~45% of input tokens** every session.
 
 Based on the viral observation that caveman-speak dramatically reduces LLM token usage without losing technical substance. So we made it a one-line install.
 
@@ -37,14 +37,14 @@ Based on the viral observation that caveman-speak dramatically reduces LLM token
 
 ### 🗣️ Normal Claude (69 tokens)
 
-> "The reason your React component is re-rendering is likely because you're creating a new object reference on each render cycle. When you pass an inline object as a prop, React's shallow comparison sees it as a different object every time, which triggers a re-render. I'd recommend using useMemo to memoize the object."
+> "您的React组件重新渲染的原因可能是因为您在每个渲染周期都创建了一个新的对象引用。当您将内联对象作为prop传递时，React的浅比较每次都会将其视为不同的对象，从而触发重新渲染。我建议使用useMemo来记忆该对象。"
 
 </td>
 <td width="50%">
 
 ### 🪨 Caveman Claude (19 tokens)
 
-> "New object ref each render. Inline object prop = new ref = re-render. Wrap in `useMemo`."
+> "每次渲染新对象引用。内联对象prop = 新引用 = 重渲染。包 `useMemo`。"
 
 </td>
 </tr>
@@ -53,14 +53,14 @@ Based on the viral observation that caveman-speak dramatically reduces LLM token
 
 ### 🗣️ Normal Claude
 
-> "Sure! I'd be happy to help you with that. The issue you're experiencing is most likely caused by your authentication middleware not properly validating the token expiry. Let me take a look and suggest a fix."
+> "没问题！我很乐意帮您解决这个问题。您遇到的问题可能是因为身份验证中间件没有正确验证Token过期时间。让我看看并建议一个修复方案。"
 
 </td>
 <td>
 
 ### 🪨 Caveman Claude
 
-> "Bug in auth middleware. Token expiry check use `<` not `<=`. Fix:"
+> "auth中间件bug。Token过期检查用 `<` 不做 `<=`。改:"
 
 </td>
 </tr>
@@ -76,21 +76,21 @@ Based on the viral observation that caveman-speak dramatically reduces LLM token
 
 #### 🪶 Lite
 
-> "Your component re-renders because you create a new object reference each render. Inline object props fail shallow comparison every time. Wrap it in `useMemo`."
+> "你的组件重新渲染是因为你每次渲染都会创建新的对象引用。内联对象prop每次都通不过浅层比较。把它包在 `useMemo` 里。"
 
 </td>
 <td width="33%">
 
 #### 🪨 Full
 
-> "New object ref each render. Inline object prop = new ref = re-render. Wrap in `useMemo`."
+> "每次渲染新对象引用。内联对象prop = 新引用 = 重渲染。包 `useMemo`。"
 
 </td>
 <td width="33%">
 
 #### 🔥 Ultra
 
-> "Inline obj prop → new ref → re-render. `useMemo`."
+> "内联对象prop → 新引用 → 重渲染。 `useMemo`。"
 
 </td>
 </tr>

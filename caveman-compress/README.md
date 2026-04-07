@@ -17,7 +17,7 @@ Claude read `CLAUDE.md` on every session start. If file big, cost big. Caveman m
 ## What It Do
 
 ```
-/caveman-compress CLAUDE.md
+/caveman-compress-zh CLAUDE.md
 ```
 
 ```
@@ -50,14 +50,14 @@ All validations passed ✅ — headings, code blocks, URLs, file paths preserved
 
 ### 📄 Original (706 tokens)
 
-> "I strongly prefer TypeScript with strict mode enabled for all new code. Please don't use `any` type unless there's genuinely no way around it, and if you do, leave a comment explaining the reasoning. I find that taking the time to properly type things catches a lot of bugs before they ever make it to runtime."
+> "我强烈建议在所有新代码中启用严格模式使用 TypeScript。请不要使用 `any` 类型，除非确实没有其他办法，如果必须使用，请留下注释解释原因。我发现花时间正确设置类型可以在代码运行之前捕获许多 Bug。"
 
 </td>
 <td width="50%">
 
 ### 🪨 Caveman (285 tokens)
 
-> "Prefer TypeScript strict mode always. No `any` unless unavoidable — comment why if used. Proper types catch bugs early."
+> "首选TypeScript严格模式。无 `any`，除非不可避免 — 若用需注释原因。正确类型早抓Bug。"
 
 </td>
 </tr>
@@ -68,13 +68,13 @@ All validations passed ✅ — headings, code blocks, URLs, file paths preserved
 ## Install
 
 ```bash
-cp -r ~/.claude/skills/caveman-compress <path-to-skill>
+cp -r ~/.claude/skills/caveman-compress-zh <path-to-skill>
 ```
 
 Or if you have the caveman repo:
 
 ```bash
-cp -r skills/caveman-compress ~/.claude/skills/caveman-compress
+cp -r skills/caveman-compress ~/.claude/skills/caveman-compress-zh
 ```
 
 **Requires:** Python 3.10+
@@ -82,14 +82,14 @@ cp -r skills/caveman-compress ~/.claude/skills/caveman-compress
 ## Usage
 
 ```
-/caveman-compress <filepath>
+/caveman-compress-zh <filepath>
 ```
 
 Examples:
 ```
-/caveman-compress CLAUDE.md
-/caveman-compress docs/preferences.md
-/caveman-compress todos.md
+/caveman-compress-zh CLAUDE.md
+/caveman-compress-zh docs/preferences.md
+/caveman-compress-zh todos.md
 ```
 
 ### What files work
